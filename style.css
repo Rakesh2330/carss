@@ -225,47 +225,46 @@ a {
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
-/* Make the parent item static so the dropdown aligns to the screen */
+/* Make the parent item relative so the dropdown aligns to it */
 .nav-item-mega {
-  position: static;
+  position: relative;
 }
 
 /* Mega Menu container */
 .mega-menu {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%; /* Full screen width relative to the fixed navbar */
+  left: 50%;
+  width: 260px;
   background: #FFFFFF;
-  border-top: 1px solid var(--border-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   color: var(--text-dark);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(15px);
+  transform: translateY(15px) translateX(-50%);
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  padding: 2.5rem 0;
+  padding: 1.5rem;
   z-index: 999;
 }
 
 .nav-item-mega:hover .mega-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(15px) translateX(-50%);
 }
 
 .mega-container {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 3rem;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .mega-sidebar {
-  border-right: 1px solid var(--border-color);
-  padding-right: 2rem;
+  border-right: none;
+  padding-right: 0;
 }
 
 .mega-sidebar-title {
@@ -1646,12 +1645,12 @@ a {
   object-fit: cover;
   object-position: center;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
-  filter: brightness(0.7) saturate(0.9);
+  filter: grayscale(100%) brightness(0.7);
 }
 
 .gallery-item:hover .gallery-img-wrap img {
   transform: scale(1.05) translateZ(10px);
-  filter: brightness(0.55) saturate(1.1);
+  filter: grayscale(0%) brightness(0.75) saturate(1.2);
 }
 
 /* ── Dark Gradient Overlay ── */
@@ -2183,17 +2182,21 @@ a {
    12. CONTACT FOOTER
    ========================================================================== */
 footer {
-  background: var(--primary);
+  background: linear-gradient(135deg, #0b192c 0%, #1a365d 50%, #0f172a 100%);
   color: #FFFFFF;
-  padding: 5rem 0 2rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 5rem 0 3rem;
+  border-top: 4px solid var(--accent-orange);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1.3fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
+  grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand {
+  text-align: center;
 }
 
 .footer-brand h3 {
@@ -2216,6 +2219,7 @@ footer {
 
 .footer-socials {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -2562,4 +2566,150 @@ footer {
     height: 180px;
   }
   .calc-outputs {
+    flex-direction: column;
+  }
+}
 
+/* ==========================================================================
+   10. LOADING SCREEN STYLES
+   ========================================================================== */
+#cm-loader-bg {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Removed .cm-loader-area since we use full viewport width now */
+
+.cm-moving-car {
+  position: absolute;
+  top: 40%;
+  left: -20%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.cm-svg-car {
+  width: 180px;
+  height: auto;
+  z-index: 2;
+}
+
+.cm-smoke-wrap {
+  position: absolute;
+  bottom: 10px;
+  left: -30px;
+  width: 60px;
+  height: 20px;
+  z-index: 1;
+}
+
+.cm-smoke {
+  position: absolute;
+  bottom: 0;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0;
+  animation: cmSmokeAnim 0.8s linear infinite;
+}
+
+.cm-smoke-1 { left: 30px; animation-delay: 0s; }
+.cm-smoke-2 { left: 15px; animation-delay: 0.3s; }
+.cm-smoke-3 { left: 0px; animation-delay: 0.6s; }
+
+@keyframes cmSmokeAnim {
+  0% { transform: scale(0.5) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(3) translate(-30px, -10px); opacity: 0; }
+}
+
+.cm-full-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+  z-index: 5;
+}
+
+.cm-full-logo img {
+  max-height: 250px;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Progress Bar */
+.cm-progress-container {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 10;
+}
+
+.cm-progress-text {
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.cm-progress-bar-wrap {
+  width: 40vw;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cm-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #ff1e00;
+  border-radius: 4px;
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 768px) {
+  .cm-progress-bar-wrap {
+    width: 75vw;
+  }
+}
+
+.cm-drive-animation {
+  animation: cmDrive 3s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+
+@keyframes cmDrive {
+  0% { left: -20%; }
+  100% { left: 110%; }
+}
+
+.cm-reveal-logo {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.cm-loader-hide {
+  opacity: 0 !important;
+  pointer-events: none;
+}

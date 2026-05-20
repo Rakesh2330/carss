@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Cars – Car Mart Mysore | Premium Used Cars</title>
+  <title>Our Cars – Car Mart Mysuru | Premium Used Cars</title>
   <link rel="icon" type="image/png" href="public/images/favicon.png">
-  <meta name="description" content="Browse our handpicked collection of verified used cars in Mysore. Maruti Suzuki, Toyota Fortuner, Tata Nexon, Hyundai Verna, Tata Harrier, Honda City and more." />
+  <meta name="description" content="Browse our handpicked collection of verified used cars in Mysuru. Maruti Suzuki, Toyota Fortuner, Tata Nexon, Hyundai Verna, Tata Harrier, Honda City and more." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -105,6 +105,8 @@
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.4rem, 5.5vw, 5rem);
       font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.6);
       line-height: 1.05;
       letter-spacing: -0.03em;
       margin-bottom: 1.6rem;
@@ -112,8 +114,9 @@
 
     .cars-hero-sub {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      font-weight: 400;
-      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
       margin-bottom: 2.5rem;
       line-height: 1.6;
     }
@@ -408,17 +411,32 @@
   <!-- ====================== NAVBAR ====================== -->
   <nav id="navbar">
     <div class="container nav-container">
-      <a href="index.html" class="logo" style="text-decoration:none;color:#fff;">
-        <i class="fa-solid fa-car-side" style="color:var(--accent-orange);font-size:1.4rem;"></i>
-        CAR <span>MART</span>
+      <a href="index.html" class="logo" style="position: relative; height: 50px; width: 300px;">
+        <img src="logo2.png" alt="CAR MART Logo" style="height: 220px; width: auto; position: absolute; top: -75px; left: 0; z-index: 1001; pointer-events: none;">
       </a>
       <ul class="nav-links">
-        <li class="nav-item"><a href="index.html" class="nav-link" style="color:#fff;">Home</a></li>
-        <li class="nav-item"><a href="cars.html" class="nav-link" style="color:var(--accent-orange);">Our Cars</a></li>
-        <li class="nav-item"><a href="index.html#sell" class="nav-link" style="color:#fff;">Sell Car</a></li>
-        <li class="nav-item"><a href="index.html#emi" class="nav-link" style="color:#fff;">Finance</a></li>
-        <li class="nav-item"><a href="index.html#about" class="nav-link" style="color:#fff;">About</a></li>
-        <li class="nav-item"><a href="index.html#contact" class="nav-link" style="color:#fff;">Contact</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item nav-item-mega">
+          <a href="index.html#featured-cars" class="nav-link">Buy Cars <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 0.25rem;"></i></a>
+          <div class="mega-menu">
+            <div class="mega-container">
+              <div class="mega-sidebar">
+                <div class="mega-sidebar-title">Categories</div>
+                <div class="mega-categories">
+                  <a href="index.html#featured-cars" class="mega-cat-link">Hatchbacks <i class="fa-solid fa-arrow-right-long"></i></a>
+                  <a href="index.html#featured-cars" class="mega-cat-link">Sedans <i class="fa-solid fa-arrow-right-long"></i></a>
+                  <a href="index.html#featured-cars" class="mega-cat-link">SUVs <i class="fa-solid fa-arrow-right-long"></i></a>
+                  <a href="index.html#featured-cars" class="mega-cat-link">MUVs / MPVs <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href="cars.html" class="nav-link active" style="color:var(--accent-orange);">Our Cars</a></li>
+        <li class="nav-item"><a href="index.html#sell-car" class="nav-link">Sell Car</a></li>
+        <li class="nav-item"><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a href="index.html#modular-grid" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-ctas">
         <a href="tel:09008740899" class="btn-nav btn-nav-outline"><i class="fa-solid fa-phone"></i> Call</a>
@@ -457,7 +475,7 @@
     <div class="cars-hero-content">
       <div class="cars-model-tag" id="cars-model-tag">Maruti Suzuki</div>
       <h1 class="cars-hero-title">Browse Our<br>Premium Fleet</h1>
-      <p class="cars-hero-sub">6 handpicked, certified used cars — fully inspected, transparently priced, and ready for a test drive in Mysore.</p>
+      <p class="cars-hero-sub">6 handpicked, certified used cars — fully inspected, transparently priced, and ready for a test drive in Mysuru.</p>
       <div class="cars-cta-row">
         <a href="#cars-grid" class="btn-hero btn-hero-solid">View All Cars</a>
         <a href="https://wa.me/919008740899" target="_blank" class="btn-hero btn-hero-outline">

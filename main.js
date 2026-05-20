@@ -44,6 +44,19 @@ function scrollToSection(selector) {
   }
 }
 
+// Intercept all hash links to use smooth scroll and prevent native jump (which looks like a reload)
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = this.getAttribute('href');
+      if (target !== '#') {
+        e.preventDefault();
+        scrollToSection(target);
+      }
+    });
+  });
+});
+
 /* ==========================================================================
    1b. HERO VIDEO BACKGROUND INIT
    ========================================================================== */
@@ -606,3 +619,50 @@ function filterGallery(category, buttonEl) {
     });
   });
 })();
+
+/* ==========================================================================
+   10. LOADING SCREEN LOGIC
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const loaderBg = document.getElementById("cm-loader-bg");
+  if (loaderBg) {
+    const movingCar = loaderBg.querySelector(".cm-moving-car");
+    const fullLogo = loaderBg.querySelector(".cm-full-logo");
+    const progressFill = loaderBg.querySelector(".cm-progress-fill");
+    const progressText = document.getElementById("cm-progress-val");
+
+    let progress = 0;
+    const duration = 3000; // 3 seconds matching the CSS animation
+    const intervalTime = 30; // update every 30ms
+
+    // 1. Start car animation and progress bar
+    setTimeout(() => {
+      if (movingCar) movingCar.classList.add("cm-drive-animation");
+      
+      const interval = setInterval(() => {
+        progress += (100 / (duration / intervalTime));
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+        }
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (progressText) progressText.innerText = `${Math.floor(progress)}%`;
+      }, intervalTime);
+    }, 200);
+
+    // 2. Wait for car to finish driving (3s), then reveal logo
+    setTimeout(() => {
+      if (fullLogo) fullLogo.classList.add("cm-reveal-logo");
+    }, 3200);
+
+    // 3. Wait for logo reveal (approx 1s), then fade out loader
+    setTimeout(() => {
+      loaderBg.classList.add("cm-loader-hide");
+    }, 4500);
+    
+    // 4. Remove from DOM
+    setTimeout(() => {
+      loaderBg.remove();
+    }, 5000);
+  }
+});
