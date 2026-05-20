@@ -2706,7 +2706,7 @@ footer {
 
 .cm-reveal-logo {
   opacity: 1 !important;
-  transform: scale(1) !important;
+  transform: translate(-50%, -50%) scale(1) !important;
 }
 
 .cm-loader-hide {
