@@ -225,12 +225,17 @@ a {
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
+/* Make the parent item static so the dropdown aligns to the screen */
+.nav-item-mega {
+  position: static;
+}
+
 /* Mega Menu container */
 .mega-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100vw;
+  width: 100%; /* Full screen width relative to the fixed navbar */
   background: #FFFFFF;
   border-top: 1px solid var(--border-color);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -2557,8 +2562,4 @@ footer {
     height: 180px;
   }
   .calc-outputs {
-    grid-template-columns: 1fr;
-  }
-}
-
 

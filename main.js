@@ -1,3 +1,5 @@
+
+
 /* ==========================================================================
    1. LENIS SMOOTH SCROLL & GSAP TICKER
    ========================================================================== */
@@ -121,10 +123,8 @@ function animateHeroEntrance() {
   }
 }
 
-// Trigger entrance animation immediately only if loader is absent
-if (!document.getElementById('cinematic-loader')) {
-  animateHeroEntrance();
-}
+// Trigger entrance animation immediately
+animateHeroEntrance();
 
 
 /* ==========================================================================
